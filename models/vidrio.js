@@ -10,6 +10,9 @@ const vidrioSchema = new Schema(
       type: Number,
       require: [true, "Por favor ingrese un precio"],
     },
+    stock: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

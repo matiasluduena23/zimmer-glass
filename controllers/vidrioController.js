@@ -21,6 +21,7 @@ const createVidrio = asyncHandler(async (req, res) => {
   const vidrio = await Vidrio.create({
     nombre: req.body.nombre,
     precio: req.body.precio,
+    stock: req.body.stock,
   });
 
   res.json(vidrio);
@@ -36,6 +37,9 @@ const updateVidrio = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Vidrio no encontrado en la base de datos.");
   }
+
+  req.body.stock &&
+    (req.body.stock = Number(vidrio.stock) + Number(req.body.stock));
 
   const udpatedVidrio = await Vidrio.findByIdAndUpdate(
     req.params.id,

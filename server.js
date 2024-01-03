@@ -13,6 +13,8 @@ app.use("/api/vidrios", require("./routes/vidrioRoutes"));
 
 app.use("/api/camaras", require("./routes/camaraRoutes"));
 
+app.use("/api/user", require("./routes/userRoutes"));
+
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

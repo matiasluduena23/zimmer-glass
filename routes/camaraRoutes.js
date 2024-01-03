@@ -7,8 +7,10 @@ const express = require("express"),
     deleteCamara,
   } = require("../controllers/camaraController");
 
-router.route("/").get(getCamaras).post(createCamara);
+const { protect } = require("../middleware/authMiddleware");
 
-router.route("/:id").put(updateCamara).delete(deleteCamara);
+router.route("/").get(protect, getCamaras).post(protect, createCamara);
+
+router.route("/:id").put(protect, updateCamara).delete(protect, deleteCamara);
 
 module.exports = router;

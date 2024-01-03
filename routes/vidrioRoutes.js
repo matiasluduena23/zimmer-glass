@@ -7,7 +7,9 @@ const express = require("express"),
     deleteVidrio,
   } = require("../controllers/vidrioController");
 
-router.route("/").get(getVidrios).post(createVidrio);
-router.route("/:id").put(updateVidrio).delete(deleteVidrio);
+const { protect } = require("../middleware/authMiddleware");
+
+router.route("/").get(protect, getVidrios).post(protect, createVidrio);
+router.route("/:id").put(protect, updateVidrio).delete(protect, deleteVidrio);
 
 module.exports = router;
