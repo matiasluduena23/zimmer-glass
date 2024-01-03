@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Vidrio = require("../models/vidrio");
+
 //@description  GET VIDRIOS
 //@route        /api/vidrios
 //@access       private
@@ -35,8 +36,6 @@ const updateVidrio = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Vidrio no encontrado en la base de datos.");
   }
-
-  console.log(req.body);
 
   const udpatedVidrio = await Vidrio.findByIdAndUpdate(
     req.params.id,
